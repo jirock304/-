@@ -1,0 +1,61 @@
+{
+  "entities": {
+    "news": {
+      "title": "News Article",
+      "description": "Article for high school students",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "summary": { "type": "string" },
+        "content": { "type": "string" },
+        "thumbnailUrl": { "type": "string" },
+        "category": { "type": "string" },
+        "authorId": { "type": "string" },
+        "authorName": { "type": "string" },
+        "publishedAt": { "type": "string", "format": "date-time" },
+        "scheduledAt": { "type": "string", "format": "date-time" },
+        "status": { "type": "string", "enum": ["draft", "published", "scheduled"] },
+        "videoUrl": { "type": "string" },
+        "viewCount": { "type": "number" }
+      },
+      "required": ["title", "content", "category", "authorId", "status"]
+    },
+    "scraps": {
+      "title": "News Scrap",
+      "description": "User's bookmarked news",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "newsId": { "type": "string" },
+        "savedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "newsId", "savedAt"]
+    },
+    "userProfile": {
+      "title": "User Profile",
+      "description": "Extended user information",
+      "type": "object",
+      "properties": {
+        "displayName": { "type": "string" },
+        "email": { "type": "string" },
+        "isAdmin": { "type": "boolean" },
+        "school": { "type": "string" },
+        "grade": { "type": "number" }
+      }
+    }
+  },
+  "firestore": {
+    "/news/{newsId}": {
+      "schema": "news",
+      "description": "News articles collection"
+    },
+    "/users/{userId}": {
+      "schema": "userProfile",
+      "description": "User profiles"
+    },
+    "/users/{userId}/scraps/{scrapId}": {
+      "schema": "scraps",
+      "description": "User-specific scraps"
+    }
+  }
+}

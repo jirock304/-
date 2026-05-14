@@ -1,0 +1,8 @@
+{
+  "name": "요고어때",
+  "description": "고등학생을 위한 뉴스 서비스. 요즘 고딩들의 트렌드와 소식을 전합니다.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
